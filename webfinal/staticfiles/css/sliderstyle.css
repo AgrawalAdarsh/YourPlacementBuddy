@@ -1,0 +1,22 @@
+.slider-section {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #f8f9fa;
+}
+
+.slide-container {
+    max-width: 1120px;
+    width: 100%;
+    margin: auto;
+}
+
+.slide-content {
+    margin: 0 40px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.card {
+    border-radius: 25px;
+    background-color: #FFF;
+}

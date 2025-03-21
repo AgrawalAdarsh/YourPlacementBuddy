@@ -1,0 +1,256 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Navigation Bar */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(37, 43, 40);
+    color: black;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Right-Side Icons */
+.right-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tracker-icon img, .profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.tracker-icon, .profile-icon {
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tracker-icon:hover, .profile-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Intro Section */
+.intro {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(to right, #4CAF50, #81C784); 
+}
+
+.intro h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.intro button {
+    background: #03661a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.intro button:hover {
+    background: #218838;
+}
+
+/* Features Section */
+.features-intro {
+    text-align: center;
+    padding: 20px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+}
+
+.feature {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature img {
+    width: 100%;
+    max-height: 150px;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+/* How It Works Section */
+.how-it-works {
+    background: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.step {
+    max-width: 300px;
+    padding: 20px;
+    background: #e3f2fd;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+    cursor: pointer;
+}
+
+.step:hover {
+    transform: scale(1.05);
+    background-color: #cce5ff;
+}
+
+
+/* Testimonials */
+.testimonials {
+    background: #f8f9fa;
+    padding: 40px;
+    text-align: center;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+}
+
+.testimonial {
+    display: none; /* Hide all testimonials */
+    font-size: 18px;
+    font-style: italic;
+    width: 60%;
+    padding: 20px;
+    color: #146453;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.testimonial.active {
+    display: block; /* Show only the active testimonial */
+}
+
+
+
+/* Contact Us CTA */
+.contact-us {
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(to right, #4CAF50, #81C784); 
+    color: white;
+}
+
+.contact-us button {
+    background: white;
+    color: #28a745;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-us button:hover {
+    color: #218838;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+/* Login Page */
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.login-container h2 {
+    text-align: center;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.login-container button {
+    width: 100%;
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}

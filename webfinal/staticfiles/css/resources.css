@@ -1,0 +1,31 @@
+@import url("styles.css");
+
+/* Roadmap Section */
+.roadmap-card {
+    background: white;
+    padding: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 8px;
+    width: 300px;
+}
+
+/* Resource Cards */
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.resource-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Blog Section */
+.blog-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}

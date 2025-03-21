@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load socialaccount %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User | Login | @YourPlacementBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/user.css' %}?v=2">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+    
+    <!-- Google OAuth Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+    <div class="container">
+        
+        <!-- Display Django Messages -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li style="color: red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Traditional Django Login Form -->
+        <form id="loginForm" method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h2>Login</h2>
+
+            <div class="input-container">
+                <input type="email" id="login_email" name="email" placeholder="Email" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="input-container">
+                <input type="password" id="login_password" name="password" placeholder="Password" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        {% comment %} <!-- Google Login Button -->
+        <div id="g_id_onload"
+             data-client_id="YOUR_GOOGLE_CLIENT_ID"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-auto_select="true">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signin_with"
+             data-size="large">
+        </div> {% endcomment %}
+
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+    </div>
+
+    <script src="{% static 'js/validations.js' %}"></script>
+
+    <script>
+        function handleCredentialResponse(response) {
+            // Send Google token to the backend
+            fetch('/accounts/google/callback/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: response.credential })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/'; // Redirect to index.html
+                } else {
+                    alert('Google login failed');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>

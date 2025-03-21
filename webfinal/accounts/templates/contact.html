@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | YourPlacementBuddy | @Ady</title>
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons'%}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq'%}">FAQ</a></li>
+                        <br>
+                        <li><a href="{% url 'about'%}">About_Us</a></li>
+                        <br>
+                        <li><a href="{% url 'contact'%}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <section class="contact-container">
+            <h1>Contact Us</h1>
+            <p>Welcome to <strong>YourPlacementBuddy</strong>, We’re always eager to hear from you.</p>
+            <p>Whether you want to share feedback, ask questions, or simply say hello, we’re here and ready to listen.</p>
+
+            <h3>How Can We Help?</h3>
+            <ul class="contact-list">
+                <li><b>Website Feedback:</b> Share your opinions on our website’s design and functionality.</li>
+                <li><b>Content Queries:</b> Have a question about our content? Feel free to ask!</li>
+                <li><b>Corrections or Updates:</b> Help us keep our information accurate and up-to-date.</li>
+                <li><b>Design Suggestions:</b> Suggest changes in theme, colors, or layout.</li>
+                <li><b>Technical Issues:</b> Report bugs or errors for a better user experience.</li>
+            </ul>
+
+            <h3>Contact Information</h3>
+            <p><strong>Email:</strong></p>
+            <ul>
+                <li><a href="mailto:Ady.YourPlacementBuddy@gmail.com">Ady.YourPlacementBuddy@gmail.com</a></li>
+                <li><a href="mailto:PlacementSai@gmail.com">PlacementSai@gmail.com</a></li>
+            </ul>
+
+            <p><strong>Phone:</strong></p>
+            <ul>
+                <li>📞 9898900001</li>
+                <li>📞 9752989663</li>
+                <li>📞 7745894612</li>
+            </ul>
+
+            <p><strong>Address:</strong></p>
+            <p>10, Soni Chambers, Avantikabai Gokhale, Opera House, Mumbai, Maharashtra, 400004, India</p>
+
+            
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

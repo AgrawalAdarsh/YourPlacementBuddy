@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Chatroom | YourPlacementBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons' %}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq' %}">FAQ</a></li><br>
+                        <li><a href="{% url 'about' %}">About_Us</a></li><br>
+                        <li><a href="{% url 'contact' %}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="chat-container">
+        <div class="chat-sidebar">
+        <h3>Chats</h3>
+        <!-- Store logged-in username -->
+        <span id="logged-in-user" style="display: none;">{{ username }}</span>
+
+        <!-- Chat Room List -->
+        <ul id="chat-list">
+            {% for room in all_rooms %}
+                <li><a href="#" data-room="{{ room.name }}">{{ room.name }}</a></li>
+            {% empty %}
+                <li>No chat rooms available.</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Store Room Name (Fixed) -->
+        <script id="room-name" type="application/json">{{ room_name|escapejs }}</script>
+
+        <!-- Input to create new room -->
+        <input type="text" id="new-room-name" placeholder="New Room Name">
+        <button id="create-room-btn">Create Room</button>
+                    
+        </div>
+        <div class="chat-main">
+            <h2>Chatroom: <span id="room-name-display"></span></h2>
+            <div class="chat-box" id="chat-box">
+                {% for msg in messages %}
+                    <p><strong>{{ msg.alias }}</strong>: {{ msg.message }}</p>
+                {% endfor %}
+            </div>
+            <input type="hidden" id="room-name" value="{{ room_name }}">            
+            <div class="chat-input">
+                <input type="text" id="chat-message-input" placeholder="Type your message...">
+                <button id="chat-message-send">Send</button>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p>
+    </footer>
+
+    <!-- Store room name safely for JavaScript -->
+    <script id="room-name" type="application/json">{{ room_name|escapejs }}</script>
+    <script src="{% static 'js/chat.js' %}"></script>
+    
+</body>
+</html>

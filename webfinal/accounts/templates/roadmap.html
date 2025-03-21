@@ -1,0 +1,82 @@
+{% load static %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadMap Editor| byYourPlacementBuddy| @Ady</title>
+
+    <!-- Load External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.3.13/go.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Load Django Static Files -->
+    <link rel="stylesheet" href="{% static 'css/roadmap.css' %}?v=2">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons' %}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' room_name='general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <br>
+                        <li><a href="{% url 'about' %}">About_Us</a></li>
+                        <br>
+                        <li><a href="{% url 'contact' %}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Interactive Roadmap Editor</h1>
+        <p>Select a node and use the toolbar below to add, delete, connect, or import/export roadmaps.</p>
+
+        <div id="roadmapEditor"></div>
+
+        <!-- Toolbar Buttons -->
+        <div class="toolbar">
+            <button onclick="addNode()"><i class="fas fa-plus"></i> Add Node</button>
+            <button onclick="deleteNode()"><i class="fas fa-trash"></i> Delete Node</button>
+            <button onclick="startConnection()"><i class="fas fa-link"></i> Connect</button>
+            <button onclick="downloadImage()"><i class="fas fa-download"></i> Download PNG</button>
+            <button onclick="downloadJSON()"><i class="fas fa-file-code"></i> Download JSON</button>
+
+            <!-- Import Roadmap (With CSRF Protection) -->
+            <form id="importForm" method="POST" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                {% csrf_token %}
+                <input type="file" id="importFile" name="importFile" accept=".json, .png" style="display: none;" onchange="handleFileImport(event)">
+                <button type="button" onclick="document.getElementById('importFile').click();">
+                    <i class="fas fa-upload"></i> Import
+                </button>
+            </form>            
+
+            <button onclick="resetRoadmap()"><i class="fas fa-redo"></i> Reset</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p> 
+    </footer>
+
+    <!-- Load JavaScript -->
+    <script src="{% static 'js/roadmap.js' %}"></script>
+
+</body> 
+</html>

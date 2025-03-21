@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Roadmap Generator | YourPlacementBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/airoadmap.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    {% if not user.is_authenticated %}
+        <script>
+            alert("Please login to access the AI Roadmap Generator.");
+            window.location.href = "{% url 'index' %}";
+        </script>
+    {% endif %}
+
+    <!-- Page Container -->
+    <div class="page-container">
+
+        <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'hackathons' %}">Hackathons & Competitions</a></li>
+                    <li><a href="{% url 'resource' %}">Resources</a></li>
+                    <li><a href="{% url 'roadmap' %}">Roadmap Editor</a></li>
+                    <li><a href="{% url 'chatroom' room_name='general' %}">Community</a></li>
+                    <li class="dropdown">
+                        <a href="#">Other ▼</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'faq' %}">FAQ</a></li>
+                            <li><a href="{% url 'about' %}">About Us</a></li>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="right-icons">
+                    <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                    <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- AI Roadmap Generator Section -->
+        <main>
+            <section class="ai-generator">
+                <h1>AI Roadmap Generator</h1>
+                <p>Enter your field of interest and let AI generate a personalized roadmap for you!</p>
+
+                <div class="input-container">
+                    <input type="text" id="user-input" placeholder="Enter your career goal (e.g., Full Stack Developer)">
+                    <button onclick="generateRoadmap()">Generate Roadmap</button>
+                </div>
+
+                <div id="loading" class="hidden">
+                    <p>Generating your roadmap... Please wait.</p>
+                </div>
+
+                <!-- Generated Roadmap Output -->
+                <div id="roadmap-output" class="roadmap-container">
+                    <p class="placeholder-text">Roadmap will appear here...</p>
+                </div>
+
+                <!-- Download Roadmap Option -->
+                <div class="roadmap-actions">
+                    <button onclick="downloadRoadmapAsPDF()">Download PDF</button>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 YourPlacementBuddy. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="{% static 'js/airoadmap.js' %}"></script>
+
+</body> 
+</html>

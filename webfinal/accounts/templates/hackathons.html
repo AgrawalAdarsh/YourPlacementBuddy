@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathons & Competitions | Placement Roadmap</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hackathon.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons'%}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq'%}">FAQ</a></li>
+                        <br>
+                        <li><a href="{% url 'about'%}">About_Us</a></li>
+                        <br>
+                        <li><a href="{% url 'contact'%}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Hackathons & Competitions</h1>
+        <p class="intro-text">Explore the best competitions to enhance your skills and grow your network!</p>
+
+        {% if hackathon_list %}
+            {% for hackathon in hackathon_list %}
+            <div class="hackathon-card">
+                <h3>{{ hackathon.name }}</h3>
+                <p><strong>Location:</strong> {{ hackathon.location }}</p>
+                <p><strong>Start Date:</strong> {{ hackathon.start_date }}</p>
+                <p><strong>End Date:</strong> {{ hackathon.end_date }}</p>
+                <p><strong>Eligibility:</strong> {{ hackathon.eligibility|default:"Open to all" }}</p>
+                <p><strong>Benefits:</strong> {{ hackathon.benefits|default:"Skill Development & Networking" }}</p>
+                <a href="{{ hackathon.link }}" target="_blank" class="details-btn">More Details</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No upcoming hackathons found. Check back later!</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

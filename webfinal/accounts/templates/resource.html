@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | YourPlacementBuddy | @Ady</title>
+    <link rel="stylesheet" href="{% static 'css/resource.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons'%}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq'%}">FAQ</a></li><br>
+                        <li><a href="{% url 'about'%}">About_Us</a></li><br>
+                        <li><a href="{% url 'contact'%}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="resources-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h2>Resources Navigation</h2>
+            <ul>
+                <li><a href="#internship-prep">Internship Preparation</a></li>
+                <li><a href="#sde-sheets">SDE Sheets</a></li>
+                <li><a href="#video-lectures">Video Lectures</a></li>
+                <li><a href="#placement-roadmaps">Yearly Guides</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="content">
+            <h1 style="color: #007bff; font-size: 24px; font-weight: bold; border-bottom: 2px solid blue;">
+                Placement Preparation Resources
+            </h1>            
+            <p>Find all essential resources for your placement journey.</p>
+            <!-- Internship Preparation-->
+            <section id="internship-prep" class="resource-section">
+
+                <h2>Internship Preparation</h2>
+                    <!-- Scrollable table wrapper -->
+            <div style="max-height: 400px; overflow-y: auto; border: 1px solid black;">
+
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #333; color: white; position: sticky; top: 0;">
+                            <th style="border: 1px solid black; padding: 10px; text-align: left;">Title</th>
+                            <th style="border: 1px solid black; padding: 10px; text-align: left;">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resource in internship_resources %}
+                        <tr style="background-color: #f2f2f2;">
+                            <td style="border: 1px solid black; padding: 10px;">{{ resource.title }}</td>
+                            <td style="border: 1px solid black; padding: 10px;"><a href="{{ resource.link }}" target="_blank" style="color: blue; text-decoration: none;">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            </section>
+
+            <!-- SDE Sheets  -->
+            <section id="sde-sheets" class="resource-section">
+                <h2>SDE Preparation Sheets</h2>
+                <div class="roadmap-grid">
+                    {% for sheet in sde_sheets %}
+                    <div class="roadmap-card">
+                        <a href="{{ sheet.link }}" target="_blank">{{ sheet.name }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+
+            <!-- Video Lectures -->
+            <section id="video-lectures" class="resource-section">
+                <h2>Video Lectures</h2>
+                <!-- Scrollable table wrapper -->
+            <div style="max-height: 400px; overflow-y: auto; border: 1px solid black;">
+
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #333; color: white; position: sticky; top: 0;">
+                            <th style="border: 1px solid black; padding: 10px; text-align: left;">Title</th>
+                            <th style="border: 1px solid black; padding: 10px; text-align: left;">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for video in video_lectures %}
+                        <tr style="background-color: #f2f2f2;">
+                            <td style="border: 1px solid black; padding: 10px;">{{ video.title }}</td>
+                            <td style="border: 1px solid black; padding: 10px;"><a href="{{ video.link }}" target="_blank" style="color: blue; text-decoration: none;">Watch</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            </section>
+
+            <!-- Placement Roadmaps -->
+            <section id="placement-roadmaps" class="resource-section">
+                <h2>Yearly Placement Guides</h2>
+                <p>A step-by-step roadmap for placement preparation based on your year of study.</p>
+                <div class="roadmap-grid">
+                    <div class="roadmap-card"><a href="https://www.geeksforgeeks.org/complete-roadmap-for-first-year-college-students-b-tech-bca-b-sc/">1st Year Guide(by GFG)</a></div>
+                    <div class="roadmap-card"><a href="https://www.geeksforgeeks.org/complete-roadmap-for-second-year-college-students-b-tech-bca-b-sc/">2nd Year Guide(by GFG)</a></div>
+                    <div class="roadmap-card"><a href="https://www.geeksforgeeks.org/complete-roadmap-for-third-year-college-students-b-tech-bca-b-sc/?ref=next_article">3rd Year Guide(by GFG)</a></div>
+                    <div class="roadmap-card"><a href="https://www.geeksforgeeks.org/4th-year-roadmap-for-college-students/">Final Year Guide(by GFG)</a></div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/resource.js' %}"></script>
+</body>
+</html>

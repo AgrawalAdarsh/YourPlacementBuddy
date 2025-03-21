@@ -1,0 +1,143 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Navigation Bar */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(37, 43, 40);
+    color: black;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Right-Side Icons */
+.right-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tracker-icon img, .profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.tracker-icon, .profile-icon {
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tracker-icon:hover, .profile-icon:hover {
+    transform: scale(1.1);
+}
+
+/* FAQ Page Styling */
+.faq-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.faq-container h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.faq-item {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    color: #03661a;
+    margin: 0;
+}
+
+.faq-item p {
+    display: none;
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.faq-item:hover p {
+    display: block; /* Show answer on hover */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .faq-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+}

@@ -1,0 +1,139 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #32a049, #1d92b6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+}
+
+input:focus {
+    border: 2px solid #007bff;
+    outline: none;
+}
+
+/* Error Highlight */
+.input-error {
+    border: 2px solid red !important;
+}
+
+/* Floating Tooltip Alerts */
+.input-container {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 10;
+    left: 105%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-container .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent red transparent transparent;
+}
+
+/* Show Tooltip on Error */
+.tooltip.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Password Constraints Styling */
+.password-conditions {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.password-conditions span {
+    display: block;
+    color: red;
+    font-size: 12px;
+}
+
+.password-conditions .valid {
+    color: green;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Google Signup/Login Button */
+.google-btn {
+    background-color: #db4437;
+    color: white;
+    font-weight: bold;
+}
+
+.google-btn:hover {
+    background-color: #c1351d;
+}
+
+/* Adjust tooltip positioning for small screens */
+@media screen and (max-width: 500px) {
+    .tooltip {
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+    }
+    
+    .input-container .tooltip::after {
+        left: 50%;
+        top: -5px;
+        transform: translateX(-50%);
+        border-color: transparent transparent red transparent;
+    }
+}

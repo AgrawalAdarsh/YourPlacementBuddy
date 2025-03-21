@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load socialaccount %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User | Signup | @YourPlacementBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/user.css' %}?v=2">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+    
+    <!-- Google OAuth Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Traditional Django Signup Form -->
+        <form id="signupForm" method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+
+            <div class="input-container">
+                <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="input-container">
+                <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="input-container">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="input-container">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="password-conditions">
+                <span id="length">• At least 8 characters</span>
+                <span id="uppercase">• At least one uppercase letter</span>
+                <span id="number">• At least one number</span>
+                <span id="special">• At least one special character (@$!%*?&)</span>
+            </div>
+
+            <div class="input-container">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="input-container">
+                <input type="url" id="github" name="github" placeholder="GitHub Profile Link" required>
+                <div class="tooltip"></div>
+            </div>
+
+            <div class="input-container">
+                <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn Profile Link" optional>
+                <div class="tooltip"></div>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+
+        {% comment %} <!-- Google Signup Button -->
+        <div id="g_id_onload"
+             data-client_id="YOUR_GOOGLE_CLIENT_ID"
+             data-context="signup"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-auto_select="true">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signup_with"
+             data-size="large">
+        </div> {% endcomment %}
+
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+
+    <script src="{% static 'js/validations.js' %}"></script>
+
+    <script>
+        function handleCredentialResponse(response) {
+            // Send Google token to the backend
+            fetch('/accounts/google/callback/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: response.credential })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/'; // Redirect to index.html
+                } else {
+                    alert('Google signup failed');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | YourPlacementBuddy | @Ady</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons'%}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq'%}">FAQ</a></li><br>
+                        <li><a href="{% url 'about'%}">About_Us</a></li><br>
+                        <li><a href="{% url 'contact'%}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Us Section -->
+    <main>
+        <div class="about-container">
+            <h1>About Us</h1>
+            <blockquote style>
+                "Success in placements isn’t about luck; it’s about the right <b>strategy, preparation, and resources</b>."
+            </blockquote>
+            <br><br>
+            <p>
+                <b>YourPlacementBuddy</b> is built with a vision to 
+                <u>bridge the gap between students and successful placements</u> 
+                by offering a <b>structured, step-by-step approach</b> to career preparation. 
+            
+                In today’s competitive job market, having the right **resources, mentorship, and preparation strategy** 
+                is just as important as technical skills. We understand the challenges students face— 
+                <u>lack of direction, overwhelming information, and uncertainty about the right path</u>— 
+                and we aim to eliminate them with <i>curated roadmaps, AI-powered recommendations, and an active learning community</i>.  
+            </p>
+            
+            <p>
+                Our platform provides <b>personalized placement preparation</b> by guiding students from 
+                <u>fundamentals to advanced concepts</u>, ensuring they are <b>industry-ready</b>. 
+            
+                Whether it’s <u>mastering Data Structures & Algorithms, excelling in system design, preparing for interviews, 
+                or gaining real-world exposure through hackathons</u>, YourPlacementBuddy ensures 
+                <i>a well-structured learning experience</i> tailored to individual needs.  
+            </p>
+            
+            <p>
+                By integrating <u>technology, expert guidance, and community-driven learning</u>, 
+                we empower students to navigate their placement journey with <i>clarity, confidence, and the right strategy</i>— 
+                helping them land their <b>dream jobs</b> with ease.
+            </p>
+            <br><br>
+
+            <div class="mission-vision">
+                <div class="mission">
+                    <h2>Our Mission</h2>
+                    <p>To simplify placement preparation by <b>offering structured roadmaps, curated resources, and AI-powered guidance</b>, ensuring every student has a clear path to success.</p>
+                </div>
+                <div class="vision">
+                    <h2>Our Vision</h2>
+                    <p>We envision a world where <b>every student</b>, regardless of background, has access to <b>top-quality placement preparation tools</b>, bridging the gap between academia and industry.</p>
+                </div>
+            </div>
+
+            <div class="reasoning-section">
+                <h2>Why YourPlacementBuddy?</h2>
+                <div class="reason-cards">
+                    <div class="reason">
+                        <img src="{% static 'image/roadmap.png' %}" alt="Structured Roadmaps">
+                        <h3>Structured Roadmaps</h3>
+                        <p>We provide step-by-step curated roadmaps covering Data Structures, System Design, Aptitude, and Interview Preparation.</p>
+                    </div>
+                    <div class="reason">
+                        <img src="{% static 'image/airoadmap.png' %}" alt="AI-Powered Learning">
+                        <h3>AI-Powered Learning</h3>
+                        <p>Our AI-driven roadmap generator personalizes learning based on your interests, experience, and placement goals.</p>
+                    </div>
+                    <div class="reason">
+                        <img src="{% static 'image/community.png' %}" alt="Supportive Community">
+                        <h3>Supportive Community</h3>
+                        <p>Join an interactive student community for mentorship, doubt-solving, and peer learning to stay on track.</p>
+                    </div>
+                    <div class="reason">
+                        <img src="{% static 'image/hackathon.png' %}" alt="Real-World Experience">
+                        <h3>Real-World Experience</h3>
+                        <p>Participate in hackathons & competitions, strengthening your portfolio with hands-on projects and problem-solving skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

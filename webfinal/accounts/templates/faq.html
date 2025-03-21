@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | YourPlacementBuddy</title>
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons' %}">Hackathons & Competitions</a></li>
+                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq' %}">FAQ</a></li><br>
+                        <li><a href="{% url 'about' %}">About_Us</a></li><br>
+                        <li><a href="{% url 'contact' %}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
+                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FAQ Section -->
+    <main>
+        <div class="faq-container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to the most commonly asked questions about <b>YourPlacementBuddy</b>.</p>
+
+            <div class="faq-items">
+                <div class="faq-item">
+                    <h3>What is this platform about?</h3>
+                    <p>It helps students with placement preparation through structured roadmaps and resources.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is this platform free?</h3>
+                    <p>Yes, all core features are free for students.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How can I contribute?</h3>
+                    <p>You can contribute by sharing resources, writing blogs, or helping others in the community.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need to sign up to access resources?</h3>
+                    <p>Some resources are available for everyone, but signing up gives you full access to personalized roadmaps and progress tracking.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What topics are covered in the placement roadmaps?</h3>
+                    <p>Our roadmaps cover Data Structures, Algorithms, System Design, Aptitude, Behavioral Interviews, and more.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I download the study materials?</h3>
+                    <p>Yes! We provide downloadable resources, including PDFs, coding problems, and interview questions.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does YourPlacementBuddy offer mock interviews?</h3>
+                    <p>Yes! We have AI-driven and peer-to-peer mock interview sessions.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How frequently is the content updated?</h3>
+                    <p>Our team regularly updates content based on industry trends and feedback from recruiters.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are there mentorship programs?</h3>
+                    <p>Yes, we connect students with experienced mentors for career guidance and interview preparation.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I request new features or improvements?</h3>
+                    <p>Absolutely! We welcome suggestions from our users and continuously work on improvements.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does this platform offer coding practice?</h3>
+                    <p>Yes, we provide curated coding challenges and contests to enhance your problem-solving skills.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are there placement success stories?</h3>
+                    <p>Yes! We share testimonials from students who secured top placements using our platform.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I track my progress?</h3>
+                    <p>Our performance tracker helps you monitor your placement preparation journey step by step.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I access this platform on mobile?</h3>
+                    <p>Yes, the website is fully responsive and works on all devices.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
