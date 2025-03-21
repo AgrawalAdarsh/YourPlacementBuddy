@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Roadmap Generator</title>
+    <link rel="stylesheet" href="airoadmap.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">YourPlacementBuddy</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Archive</a></li>
+            <li><a href="#">Hackathons</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Roadmap Editor</a></li>
+            <li class="dropdown">
+                <a href="#">Other ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Option 1</a></li>
+                    <li><a href="#">Option 2</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="profile-section">
+            <span class="tracker-icon">📍</span>
+            <span class="profile-icon">👤</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Generate Your AI-Powered Roadmap</h1>
+        <p>Enter your field of interest and get a customized roadmap.</p>
+        <input type="text" id="userPrompt" placeholder="Enter your field of interest...">
+        <button onclick="generateRoadmap()">Generate Roadmap</button>
+    </section>
+
+    <section id="roadmap-container">
+        <h2>Your Roadmap</h2>
+        <div id="roadmap-output"></div>
+    </section>
+
+    <script src="airoadmap.js"></script>
+</body>
+</html>

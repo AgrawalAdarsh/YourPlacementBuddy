@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Editor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.3.13/go.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="roadmap.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Interactive Roadmap Editor</h1>
+        <p>Select a node and use the toolbar below to add, delete, connect, or import/export roadmaps.</p>
+
+        <div id="roadmapEditor"></div>
+
+        <!-- Toolbar Buttons -->
+        <div class="toolbar">
+            <button onclick="addNode()"><i class="fas fa-plus"></i> Add Node</button>
+            <button onclick="deleteNode()"><i class="fas fa-trash"></i> Delete Node</button>
+            <button onclick="startConnection()"><i class="fas fa-link"></i> Connect</button>
+            <button onclick="downloadImage()"><i class="fas fa-download"></i> Download PNG</button>
+            <button onclick="downloadJSON()"><i class="fas fa-file-code"></i> Download JSON</button>
+            <button onclick="importRoadmap()"><i class="fas fa-upload"></i> Import</button>
+            <button onclick="resetRoadmap()"><i class="fas fa-redo"></i> Reset</button>
+        </div>
+
+        <!-- Hidden File Input -->
+        <input type="file" id="importFile" accept=".json, .png">
+    </div>
+
+    <script src="roadmap.js"></script>
+
+</body>
+</html>

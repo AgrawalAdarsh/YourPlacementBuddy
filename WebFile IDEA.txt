@@ -1,0 +1,29 @@
+PS:Make a placement roadmap website which can be used to guide the little 1st year guy to see what roadmap to take what courses he can study what competition hackathons he can take part in and all to get placement ready from college 
+Make a blog type :
+with links to all the hackathons 
+the courses he had to take
+the branching like what he does 
+rating for some questions you ask and analyze their answers 
+graphic visual roadmap he can edit out a little 
+performance tracker like how much of the one he has completed he can mark it down 
+backend can have functionalities like:
+performance tracker 
+rating system 
+login 
+archive of roadmaps 
+edit the roadmap 
+
+Additional Pages to Add:
+Based on your project, here are the additional pages you should create:
+
+Contact Us (contact.html)
+Roadmap Editor (editor.html)
+Resources (resources.html)
+Hackathons (hackathons.html)
+Archive (archive.html)
+FAQ (faq.html)
+About Us (about.html)
+Terms & Conditions (terms.html)
+To-Do Tracker (todo.html)
+User Profile (user.html)
+AI-Generated Roadmap (ai-roadmap.html)
