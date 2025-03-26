@@ -17,32 +17,44 @@
             <ul>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'hackathons'%}">Hackathons & Competitions</a></li>
-                <li><a href="{% url 'resource' %}">Resources</a></li>
+                <li><a href="{%url 'resource'%}">Resources</a></li>
                 <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
-                <li><a href="{% url 'chatroom' 'general' %}">Community</a></li>
+                <li><a href="{% url 'chatroom' room_name='general' %}">Community</a></li>
                 <li class="dropdown">
                     <a href="#">Other ▼</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{% url 'faq'%}">FAQ</a></li><br>
-                        <li><a href="{% url 'about'%}">About_Us</a></li><br>
+                        <li><a href="{% url 'faq'%}">FAQ</a></li>
+                        <br>
+                        <li><a href="{% url 'about'%}">About_Us</a></li>
+                        <br>
                         <li><a href="{% url 'contact'%}">Contact_Us</a></li>
                     </ul>
                 </li>
             </ul>
             <div class="right-icons">
-                <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
-                <div class="profile-icon">
+                <div class="tracker-icon">
+                    <a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');">
+                        <img src="{% static 'image/logout.png' %}" alt="Tracker">
+                    </a>
+                </div>
+
+                <div class="profile-icon" data-logged-in="{% if user.is_authenticated %}true{% else %}false{% endif %}">
                     <a href="{% url 'login' %}">
                         <img src="{% static 'image/user-removebg-preview.png' %}" alt="User">
                     </a>
                 </div>
+        
                 <div class="user-details-card" id="userDetails">
-                    <p><strong>First Name:</strong> {{ user.first_name }}</p>
-                    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    {% if user.is_authenticated %}
+                        <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                    {% else %}
+                    <p style="color: white; text-align: center; font-style: italic; font-weight: bold; font-size: 14px;">Please login first!</p>
+                    {% endif %}
                 </div>
             </div>
-        </nav>
+        </nav>   
     </header>
 
     <!-- About Us Section -->
