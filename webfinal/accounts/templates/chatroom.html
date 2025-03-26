@@ -7,6 +7,7 @@
     <title>Community Chatroom | YourPlacementBuddy</title>
     <link rel="stylesheet" href="{% static 'css/chat.css' %}">
     <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
 </head>
 <body>
     <header>
@@ -28,7 +29,16 @@
             </ul>
             <div class="right-icons">
                 <div class="tracker-icon"><a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');"><img src="{% static 'image/logout.png' %}" alt="Tracker"></a></div>
-                <div class="profile-icon"><a href="{% url 'login' %}"><img src="{% static 'image/user-removebg-preview.png' %}" alt="User"></a></div>
+                <div class="profile-icon">
+                    <a href="{% url 'login' %}">
+                        <img src="{% static 'image/user-removebg-preview.png' %}" alt="User">
+                    </a>
+                </div>
+                <div class="user-details-card" id="userDetails">
+                    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                </div>
             </div>
         </nav>
     </header>
@@ -78,6 +88,6 @@
     <!-- Store room name safely for JavaScript -->
     <script id="room-name" type="application/json">{{ room_name|escapejs }}</script>
     <script src="{% static 'js/chat.js' %}"></script>
-    
+    <script src="{% static 'js/profile.js' %}"></script>
 </body>
 </html>
