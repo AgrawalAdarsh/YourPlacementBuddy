@@ -1,0 +1,38 @@
+User Authentication APIs
+POST /api/login/ – Handles user login.
+
+POST /api/signup/ – Handles user registration.
+
+POST /api/logout/ – Logs out the user.
+
+POST /api/password_reset/ – Resets user password.
+
+POST /api/reauthenticate/ – Handles multi-factor authentication.
+
+Chat APIs
+GET /api/chatrooms_list/ – Fetches a list of available chatrooms.
+
+POST /api/create_room/ – Creates a new chatroom.
+
+POST /api/send_message/ – Sends a message in a chatroom.
+
+GET /api/get_messages/<str:room_name>/ – Fetches messages from a chatroom.
+
+Roadmap & AI APIs
+GET /api/generate_ai_roadmap/ – Generates an AI-based roadmap.
+
+GET /api/roadmap/ – Retrieves an existing roadmap.
+
+POST /api/fetch_ai_roadmap/ – Fetches AI-generated roadmap details.
+
+Hackathon APIs
+GET /api/hackathons/ – Fetches a list of hackathons.
+
+GET /api/hackathons/<id>/ – Retrieves details of a specific hackathon.
+
+Other APIs
+GET /api/profile_url/ – Gets user profile details.
+
+GET /api/settings/ – Fetches application settings.
+
+GET /api/about/ – Fetches about page details.
