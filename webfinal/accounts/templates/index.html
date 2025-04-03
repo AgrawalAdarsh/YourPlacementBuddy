@@ -65,7 +65,7 @@
     <!-- Main Content -->
     <main>
         <section class="intro">
-            <h1>Welcome to the Placement Roadmap</h1>
+            <h1>Welcome to the YourPlacementBuddy</h1>
             <p>Your guide to becoming placement ready, from your first year to securing your dream job!</p>
             <button onclick="window.location.href='{% url 'airoadmap' %}'">Generate Your Roadmap</button>
         </section>
@@ -77,38 +77,38 @@
         </section>
 
         <section class="features">
-            <div class="feature">
+            <a href="{% url 'resource' %}#sde-sheets" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
                 <img src="{% static 'image/roadmap.png' %}" alt="Explore Roadmaps">
                 <h3>Explore Roadmaps</h3>
                 <p>Discover curated roadmaps from industry experts, guiding you step-by-step to your dream job.</p>
-            </div>
-            <div class="feature">
+            </a>
+            <a href="{% url 'airoadmap' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
                 <img src="{% static 'image/airoadmap.png' %}" alt="AI Roadmap Generator">
                 <h3>AI Roadmap Generator</h3>
                 <p>Use AI to generate a personalized roadmap based on your interests, skills, and timeline.</p>
-            </div>
-            <div class="feature">
-                <img src="{% static 'image/tracker.png' %}" alt="Performance Tracker">
-                <h3>Performance Tracker</h3>
-                <p>Track your progress across courses, hackathons, and roadmap milestones to stay on track.</p>
-            </div>
-            <div class="feature">
+            </a>
+            <a href="{% url 'roadmap' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/visual_roadmap.png' %}" alt="Interactive Roadmap Editor">
+                <h3>Interactive Roadmap Editor</h3>
+                <p>Design your personalized learning roadmap, connect milestones, and track your career journey step by step.</p>
+            </a>            
+            <a href="{% url 'hackathons' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
                 <img src="{% static 'image/hackathon.png' %}" alt="Hackathons & Competitions">
                 <h3>Hackathons & Competitions</h3>
                 <p>Get recommendations for hackathons and competitions to participate in to strengthen your profile.</p>
-            </div>
-            <div class="feature">
+            </a>
+            <a href="{% url 'resource'%}#internship-prep" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
                 <img src="{% static 'image/interview.png' %}" alt="Interview Preparation">
                 <h3>Interview Preparation</h3>
                 <p>Find resources, tips, and practice questions to prepare for technical and HR interviews.</p>
-            </div>
-            <div class="feature">
+            </a>
+            <a href="{% url 'chatroom' room_name='general' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
                 <img src="{% static 'image/community.png' %}" alt="Community & Networking">
                 <h3>Community & Networking</h3>
                 <p>Connect with fellow students, mentors, and industry professionals through our community.</p>
-            </div>
-        </section>
-
+            </a>
+        </section>        
+        
         <!-- How It Works Section -->
         <section class="how-it-works">
             <h2>How It Works</h2>
