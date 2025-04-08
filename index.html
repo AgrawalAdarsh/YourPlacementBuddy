@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourPlacementBuddy | A curated placement roadmap guide! | @Ady</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" href="{% static 'image/Logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <script>
+        {% for message in messages %}
+            alert("{{ message }}");
+        {% endfor %}
+    </script>
+    {% endif %}
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'hackathons'%}">Hackathons & Competitions</a></li>
+                <li><a href="{%url 'resource'%}">Resources</a></li>
+                <li><a href="{%url 'roadmap'%}">Roadmap Editor</a></li>
+                <li><a href="{% url 'chatroom' room_name='general' %}">Community</a></li>
+                <li class="dropdown">
+                    <a href="#">Other ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'faq'%}">FAQ</a></li>
+                        <br>
+                        <li><a href="{% url 'about'%}">About_Us</a></li>
+                        <br>
+                        <li><a href="{% url 'contact'%}">Contact_Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="right-icons">
+                <div class="tracker-icon">
+                    <a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?');">
+                        <img src="{% static 'image/logout.png' %}" alt="Tracker">
+                    </a>
+                </div>
+
+                <div class="profile-icon" data-logged-in="{% if user.is_authenticated %}true{% else %}false{% endif %}">
+                    <a href="{% url 'login' %}">
+                        <img src="{% static 'image/user-removebg-preview.png' %}" alt="User">
+                    </a>
+                </div>
+        
+                <div class="user-details-card" id="userDetails">
+                    {% if user.is_authenticated %}
+                        <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                    {% else %}
+                    <p style="color: white; text-align: center; font-style: italic; font-weight: bold; font-size: 14px;">Please login first!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>        
+    </header>
+    <!-- Main Content -->
+    <main>
+        <section class="intro">
+            <h1>Welcome to the YourPlacementBuddy</h1>
+            <p>Your guide to becoming placement ready, from your first year to securing your dream job!</p>
+            <button onclick="window.location.href='{% url 'airoadmap' %}'">Generate Your Roadmap</button>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-intro">
+            <h2>Key Features</h2>
+            <p>Explore the features designed to guide you to placement success!</p>
+        </section>
+
+        <section class="features">
+            <a href="{% url 'resource' %}#sde-sheets" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/roadmap.png' %}" alt="Explore Roadmaps">
+                <h3>Explore Roadmaps</h3>
+                <p>Discover curated roadmaps from industry experts, guiding you step-by-step to your dream job.</p>
+            </a>
+            <a href="{% url 'airoadmap' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/airoadmap.png' %}" alt="AI Roadmap Generator">
+                <h3>AI Roadmap Generator</h3>
+                <p>Use AI to generate a personalized roadmap based on your interests, skills, and timeline.</p>
+            </a>
+            <a href="{% url 'roadmap' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/visual_roadmap.png' %}" alt="Interactive Roadmap Editor">
+                <h3>Interactive Roadmap Editor</h3>
+                <p>Design your personalized learning roadmap, connect milestones, and track your career journey step by step.</p>
+            </a>            
+            <a href="{% url 'hackathons' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/hackathon.png' %}" alt="Hackathons & Competitions">
+                <h3>Hackathons & Competitions</h3>
+                <p>Get recommendations for hackathons and competitions to participate in to strengthen your profile.</p>
+            </a>
+            <a href="{% url 'resource'%}#internship-prep" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/interview.png' %}" alt="Interview Preparation">
+                <h3>Interview Preparation</h3>
+                <p>Find resources, tips, and practice questions to prepare for technical and HR interviews.</p>
+            </a>
+            <a href="{% url 'chatroom' room_name='general' %}" class="feature" style="text-decoration: none; color: inherit; font-weight: normal; cursor: default;">
+                <img src="{% static 'image/community.png' %}" alt="Community & Networking">
+                <h3>Community & Networking</h3>
+                <p>Connect with fellow students, mentors, and industry professionals through our community.</p>
+            </a>
+        </section>        
+        
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step" onmouseover="highlightStep(this)" onmouseout="removeHighlight(this)">
+                    <h3>1. Choose Your Path</h3>
+                    <p>Select a career path based on your interests.Choose what aligns best with your interest!</p>
+                </div>
+                <div class="step" onmouseover="highlightStep(this)" onmouseout="removeHighlight(this)">
+                    <h3>2. Generate Roadmap</h3>
+                    <p>Our AI will create a roadmap tailored to your skills.Showing the best and shortest path possible for you towards success!</p>
+                </div>
+                <div class="step" onmouseover="highlightStep(this)" onmouseout="removeHighlight(this)">
+                    <h3>3. Track Your Progress</h3>
+                    <p>Complete tasks and track your learning progress.Make a list of tasks and track daily how much you have left and how much you have achieved!</p>
+                </div>
+                <div class="step" onmouseover="highlightStep(this)" onmouseout="removeHighlight(this)">
+                    <h3>3. Look For Opportunities</h3>
+                    <p>In "Hackathons&Competitions page you can look for most suited competitions 
+                        for your current year of study according to your interests.".</p>
+                </div>
+            </div>
+        </section>
+ 
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 style="text-align: center;">What Students Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p>"This roadmap helped me land my dream job! The AI roadmap generator is amazing!"</p>
+                <strong>— Rahul Sinha, Placed at Google</strong>
+            </div>
+            <div class="testimonial">
+                <p>"The structured roadmap made my preparation smooth and easy. Highly recommended!"</p>
+                <strong>— Priya Sharma, Placed at Amazon</strong>
+            </div>
+            <div class="testimonial">
+                <p>"The AI-generated roadmap provided me with step-by-step guidance for my journey. Can't express my gratitude to <b>@YourPlacementBuddy</b>"</p>
+                <strong>— Amit Kumar, Placed at Microsoft</strong>
+            </div>
+        </div>
+    </section>                  
+    <!-- Contact Us CTA -->
+    <section class="contact-us">
+        <h2>Get in Touch</h2>
+        <p>Have questions or need guidance? Contact us and our team will assist you.</p>
+        <button onclick="contactUs()">Contact Us</button>
+    </section>        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Placement Roadmap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function contactUs() {
+            window.location.href = "{% url 'contact' %}";
+        }
+    </script>
+    <script>
+        // Dynamic Testimonials
+        document.addEventListener("DOMContentLoaded", function () {
+            let testimonials = document.querySelectorAll(".testimonial");
+            let index = 0;
+        
+            function showNextTestimonial() {
+                testimonials.forEach(t => t.style.display = "none"); // Hide all
+                testimonials[index].style.display = "block"; // Show the active one
+                index = (index + 1) % testimonials.length; // Loop back
+            }
+        
+            showNextTestimonial(); // Show first testimonial immediately
+            setInterval(showNextTestimonial, 3000); // Change every 3 seconds
+        });
+     </script>
+    <script src="{% static 'js/how-it-works.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>
+hange every 3 seconds
+        });
+     </script>
+    <script src="{% static 'js/how-it-works.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>
